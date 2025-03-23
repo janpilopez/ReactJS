@@ -9,15 +9,18 @@ class ContentRating extends Component {
     this.state = {
         likes: 0,
         dislikes: 0,
+        totalRatings: 0,
         //manejadores de eventos 
         handleLike:() => {
             this.setState( (prevState) => ({
-                likes: parseInt(prevState.likes)+1
+                likes: parseInt(prevState.likes)+1,
+                totalRatings: prevState.totalRatings + 1
             } ));
         },
         handleDislike:() => {
             this.setState( prevState => ({
-                dislikes: parseInt(prevState.dislikes)+1
+                dislikes: parseInt(prevState.dislikes)+1,
+                totalRatings: prevState.totalRatings + 1
             }));
         }
     };
@@ -31,6 +34,7 @@ class ContentRating extends Component {
             esto es una prueba si te gusta
             like si no dislike xd
         </p>
+        <p>Total Ratings: {this.state.totalRatings}</p>
         <div className='rating-buttons'>
             <button className="like-button" onClick={this.state.handleLike} >
                 Like ( {this.state.likes} )
